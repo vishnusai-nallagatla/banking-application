@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css"crossorigin="anonymous">
+<style>
+	@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+	:root {
+		--white-color: hsl(0, 0%, 100%);
+		--black-color: hsl(0, 0%, 0%);
+		--primary-color: hsl(210, 36%, 96%);
+		--secondary-color: hsl(210, 22%, 49%);
+		--body-font: "Poppins", sans-serif;
+		--h1-font-size: 2rem;
+		--normal-font-size: 1rem;
+		--small-font-size: .813rem;
+	}
+	* {
+		box-sizing: border-box;
+		padding: 0;
+		margin: 0;
+	}
+	
+	body, input, button {
+		font-family: var(--body-font);
+		font-size: var(--normal-font-size);
+	}
+	
+	a {
+		text-decoration: none;
+	}
+	
+	img {
+		display: block;
+		max-width: 100%;
+		height: auto;
+	}
+	
+	body {
+		background: linear-gradient(135deg, #4facfe, #00f2fe);
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		animation: backgroundAnimation 10s infinite alternate;
+	}
+	
+	@keyframes backgroundAnimation {
+		0% { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+		100% { background: linear-gradient(135deg, #00f2fe, #4facfe); }
+	}
+	
+	.login {
+		position: relative;
+		height: 100%;
+		width: 100%;
+		display: grid;
+		align-items: center;
+		overflow: hidden;
+	}
+	
+	.login__bg {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+		animation: fadeIn 2s ease-in-out;
+	}
+	
+	@keyframes fadeIn {
+		from { opacity: 0; }
+		to { opacity: 1; }
+	}
+	
+	.login__form {
+		position: relative;
+		margin: 1.5rem;
+		background-color: rgba(255, 255, 255, 0.2);
+		padding: 2.5rem 1rem;
+		color: var(--white-color);
+		border-radius: 1rem;
+		backdrop-filter: blur(10px);
+		animation: formAnimation 1s ease-out;
+		box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+	}
+	
+	@keyframes formAnimation {
+		from { transform: translateY(50px); opacity: 0; }
+		to { transform: translateY(0); opacity: 1; }
+	}
+	
+	.login__title {
+		text-align: center;
+		font-size: var(--h1-font-size);
+		margin-bottom: 1.25rem;
+	}
+	
+	.login__inputs, .login__box {
+		display: grid;
+	}
+	
+	.input-field {
+		row-gap: 1.25rem;
+		margin-bottom: 1rem;
+	}
+	
+	.login__box {
+		grid-template-columns: 1fr max-content;
+		column-gap: .75rem;
+		align-items: center;
+		padding-inline: 1.25rem;
+		border-radius: 4rem;
+		animation: inputBoxAnimation 1s ease-out;
+		box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+	}
+	
+	@keyframes inputBoxAnimation {
+		from { transform: scale(0.95); opacity: 0; }
+		to { transform: scale(1); opacity: 1; }
+	}
+	
+	.login__input, .login__button {
+		border: none;
+		outline: none;
+	}
+	
+	.login__input {
+		width: 100%;
+		background: none;
+		color: var(--white-color);
+		padding-block: 1rem;
+	}
+	
+	.login__input::placeholder {
+		color: var(--white-color);
+	}
+	
+	.login__box i {
+		font-size: 1.25rem;
+	}
+	
+	.login__check, .login__check-box {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	
+	.login__check {
+		margin-bottom: 1rem;
+		font-size: var(--small-font-size);
+	}
+	
+	.login__check-box {
+		column-gap: .5rem;
+	}
+	
+	.login__check-input {
+		width: 1rem;
+		height: 1rem;
+		accent-color: var(--white-color);
+	}
+	
+	.login__forgot {
+		color: var(--white-color);
+	}
+	
+	.login__forgot:hover {
+		text-decoration: underline;
+	}
+	
+	.login__button {
+		width: 100%;
+		padding: 1rem;
+		margin-bottom: 1rem;
+		background-color: var(--white-color);
+		border-radius: 4rem;
+		color: var(--black-color);
+		font-weight: 500;
+		cursor: pointer;
+		transition: background-color 0.3s ease;
+	}
+	
+	.login__button:hover {
+		background-color: var(--secondary-color);
+		color: var(--white-color);
+	}
+	
+	.login__register {
+		font-size: var(--small-font-size);
+		text-align: center;
+	}
+	
+	.login__register a {
+		color: var(--white-color);
+		font-weight: 500;
+	}
+	
+	.login__register a:hover {
+		text-decoration: underline;
+	}
+	
+	/*=============== BREAKPOINTS ===============*/
+	/* For medium devices */
+	@media screen and (min-width: 576px) {
+		.login {
+			justify-content: center;
+		}
+		.login__form {
+			width: 420px;
+			padding-inline: 2.5rem;
+		}
+		.login__title {
+			margin-bottom: 2rem;
+		}
+	}
+	</style>
+
+<title>Customer_Login_Page</title>
+</head>
+<body>
+	<div class="login">
+		<form action="Customerlogin" method="post"
+					class="login__form">
+					<h2 class="login__title">Customer Login</h2>
+					<div class="login__inputs">
+					<div class="login__box input-field">
+					 <input type="text" name="username"
+							placeholder="Username" required class="login__input">
+					</div>
+					<div class="login__box input-field">
+					    <input type="password" id="dob"
+							name="password" required placeholder="password"
+							class="login__input">
+					</div>
+					</div>
+					<input type="submit" value="Login" class="login__button" /> <a
+						href="Changepassword.html" style="color: rgb(48, 140, 215);">Reset
+						Password</a>
+		</form>
+	</div>
+</body>
+</html>

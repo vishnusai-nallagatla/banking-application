@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Close Account</title>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+	integrity="sha512-SPz+q3DFV7lxhtCmM1kbWYHrAV6DgbxM5vnm3Rw1MGfIyCXPCZCjGTxL8Oy8eNc7BQsVlX9ctY+sy1HJYyKjxw=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+body {
+	font-family: Arial, sans-serif;
+    background-color: #ffffff;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	overflow: hidden;
+	animation: backgroundAnimation 10s infinite alternate;
+}
+
+@keyframes backgroundAnimation {
+	0% { background: linear-gradient(135deg, #ff9a9e, #fad0c4); }
+	100% { background: linear-gradient(135deg, #ff9a9e, #fad0c4); }
+}
+
+.container {
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+	width: 90%;
+	max-width: 400px;
+	animation: containerAnimation 1s ease-out;
+}
+
+@keyframes containerAnimation {
+	from { transform: scale(0.5); opacity: 0; }
+	to { transform: scale(1); opacity: 1; }
+}
+
+h2 {
+	margin-top: 0;
+	text-align: center;
+    color:  #ff9a9e;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+input[type="text"], input[type="submit"] {
+	padding: 10px;
+	margin: 15px 0;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
+	padding-left: 35px;
+	transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+	border-color: #00b4db;
+}
+
+input[type="submit"] {
+	background: linear-gradient(135deg, #ff9a9e, #fad0c4);;
+	color: white;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4); 
+}
+
+.fa {
+	position: absolute;
+	margin: 12px 0 0 10px;
+	color: #555;
+	transition: color 0.3s ease;
+}
+
+input[type="text"]:focus + .fa {
+	color: #00b4db;
+}
+
+.error {
+	color: red;
+	font-size: 14px;
+	margin-top: 5px;
+}
+
+p {
+	color: red;
+	text-align: center;
+}
+
+@media (min-width: 600px) {
+	.container {
+		width: 400px;
+	}
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<h2>Close Account</h2>
+		<form id="Close_Account" action="Closeaccount" method="post">
+			<label for="full_name"><i class="fa fa-user"></i> Full Name:</label>
+			<input type="text" id="full_name" name="full_name" required>
+			<span class="error" id="fullNameError"></span>
+			<label for="account_number"><i class="fa fa-credit-card"></i> Account Number:</label>
+			<input type="text" id="account_number" name="account_number" required>
+			<span class="error" id="accountNumberError"></span>
+			<label for="mobile_number"><i class="fa fa-phone"></i> Mobile Number:</label>
+			<input type="text" id="mobile_number" name="mobile_number" required>
+			<span class="error" id="mobileNumberError"></span>
+			<input type="submit" value="Close Account">
+            <p>Note: Make sure your account balance is 0</p>
+
+		</form>
+	</div>
+</body>
+</html>

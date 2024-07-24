@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Banking System Login</title>
+<script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+<style>
+   * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+input {
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  background: url('https://img.freepik.com/premium-vector/financial-banking-technology-concept_387612-31.jpg?w=1060') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  height: 100vh;
+  overflow: hidden;
+  margin-left: 100px;
+}
+
+.container {
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  background: transparent;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.panel-container {
+  width: 100%;
+  color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.panel-container h3 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  animation: fadeInDown 1s;
+}
+
+.panel-container p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  animation: fadeInUp 1s;
+}
+
+.btn {
+  width: 150px;
+  background-color: transparent;
+  border: 2px solid #fff;
+  height: 50px;
+  border-radius: 25px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #fff;
+  color: #47216d;
+  transform: scale(1.05);
+}
+a {
+        text-decoration: none;
+        color: inherit; /* Inherit the color of the parent element */
+    }
+@media (max-width: 870px) {
+  .container {
+    padding: 30px 10px;
+  }
+}
+
+@media (max-width: 570px) {
+  .panel-container h3 {
+    font-size: 1.5rem;
+  }
+
+  .panel-container p {
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    height: 45px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="panel-container">
+			<h3>Welcome to the Banking System</h3>
+			<p>Admin and Customers can access their respective dashboards after logging in.</p>
+			<button class="btn transparent"><a href="Adminlogin.html">Admin Login</a></button>
+			
+			<button class="btn transparent"><a href="Customerlogin.html">Customer Login</a></button>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        :root {
+            --primary-color: #68aefe;
+            --secondary-color: hsl(314, 85%, 82%);
+            --background-color: #f0f4f8;
+            --card-bg-color: #ffffff;
+            --text-color: #333333;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: rgb(0, 29, 248);
+        }
+
+        .card {
+            background-color: var(--card-bg-color);
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .details-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .details-item i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+
+        .atm-card-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .atm-card {
+            flex: 1;
+            min-width: 300px;
+            background-image: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .input-container {
+            margin-bottom: 15px;
+        }
+
+        .input-container input {
+            width: 95%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .input-container input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: white;
+            color: var(--primary-color);
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .transaction-history {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .download-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background-color: var(--primary-color);
+        }
+        .navbar {
+            background-color: var(--primary-color);
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .navbar-title {
+            color: white;
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .logout-btn {
+            background-color: white;
+            color: var(--primary-color);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            width: 90px;
+        }
+
+        .logout-btn:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            .navbar-container {
+                flex-direction: row;
+                text-align: center;
+
+            }
+
+            .navbar-title {
+                margin-bottom: 10px;
+                font-size: 15px;
+            }
+            .atm-card {
+         
+            min-width: 200px;
+           
+           }
+           .details-item {
+            font-size:10px;
+          }
+          .download-btn {
+            width: 150px;
+            font-size:10px;
+          }
+
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        @media (max-width: 768px) {
+            .atm-card-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <h1 class="navbar-title">Customer Dashboard</h1>
+            <button onclick="location.href='Homepage.html'" class="logout-btn">Log Out</button>
+        </div>
+    </nav>
+
+
+    <div class="dashboard-container">
+        <div class="card animate-fade-in">
+            <h2>Welcome, <span id="fullName"></span>!</h2>
+            <div class="details-grid">
+                <div class="details-item"><i class="fas fa-user"></i><strong>Account No:</strong> <span id="account"></span></div>
+                <div class="details-item"><i class="fas fa-map-marker-alt"></i><strong>Address:</strong> <span id="address"></span></div>
+                <div class="details-item"><i class="fas fa-phone"></i><strong>Mobile:</strong> <span id="mobileNo"></span></div>
+                <div class="details-item"><i class="fas fa-envelope"></i><strong>Email:</strong> <span id="email"></span></div>
+                <div class="details-item"><i class="fas fa-credit-card"></i><strong>Account Type:</strong> <span id="accountType"></span></div>
+                <div class="details-item"><i class="fas fa-address-card"></i><strong>ID Proof:</strong> <span id="id_proff"></span></div>
+                <div class="details-item"><i class="fas fa-id-card"></i><strong>ID Proof Number:</strong> <span id="id_proff_number"></span></div>
+                <div class="details-item"><i class="fas fa-calendar-alt"></i><strong>Date of Birth:</strong> <span id="dob"></span></div>
+            </div>
+        </div>
+
+        <div class="atm-card-container">
+            <div class="atm-card animate-fade-in">
+                <h2>Deposit Amount</h2>
+                <form action="BankingOperations" method="post">
+                    <div class="input-container">
+                        <input type="text" name="accountNumber" placeholder="Account Number" required>
+                    </div>
+                    <div class="input-container">
+                        <input type="tel" name="mobileNumber" placeholder="Mobile Number" required>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" name="amount" placeholder="Deposit Amount" required>
+                    </div>
+                    <button type="submit">Deposit</button>
+                </form>
+            </div>
+
+            <div class="atm-card animate-fade-in">
+                <h2>Withdraw Amount</h2>
+                <form action="BankingOperations" method="post">
+                    <div class="input-container">
+                        <input type="text" name="accountNumber" placeholder="Account Number" required>
+                    </div>
+                    <div class="input-container">
+                        <input type="tel" name="mobileNumber" placeholder="Mobile Number" required>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" name="withdrawAmount" placeholder="Withdraw Amount" required>
+                    </div>
+                    <button type="submit">Withdraw</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card animate-fade-in">
+            <div class="transaction-history">
+                <table id="transaction-table">
+                    <!-- Transaction history will be displayed here -->
+                </table>
+            </div>
+            <a href="TransactionHistoryServlet?download=true" class="download-btn" download>Download Transaction History</a>
+        </div>
+
+        <button onclick="refreshPage()" class="animate-fade-in">Refresh</button>
+        <button onclick="location.href='Closeaccount.html'" class="animate-fade-in" style="margin-top: 10px; background-color: #ff8372;">Close Account</button>
+    </div>
+
+    <script>
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        
+
+     function fetchTransactionHistory() {
+    fetch('TransactionHistoryServlet')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('transaction-table').innerHTML = data;
+        })
+        .catch(error => console.error('Error fetching transaction history:', error));
+       }
+     fetchTransactionHistory();
+     function refreshPage() {
+    	    location.reload();
+    	}
+
+     var fullName = getUrlParameter('fullName');
+     var account = getUrlParameter('account');
+     var address = getUrlParameter('address');
+     var mobileNo = getUrlParameter('mobileNo');
+     var email = getUrlParameter('email');
+     var accountType = getUrlParameter('accountType');
+     var balance = getUrlParameter('balance');
+     var id_proff = getUrlParameter('id_proff');  // Check this variable name
+     var id_proff_number = getUrlParameter('id_proff_number');
+     var dob = getUrlParameter('dob');
+
+     document.getElementById('fullName').textContent = fullName;
+     document.getElementById('account').textContent = account;
+     document.getElementById('address').textContent = address;
+     document.getElementById('mobileNo').textContent = mobileNo;
+     document.getElementById('email').textContent = email;
+     document.getElementById('accountType').textContent = accountType;
+     document.getElementById('id_proff').textContent = id_proff;  // Check this ID for correct reference in HTML
+     document.getElementById('id_proff_number').textContent = id_proff_number;  // Check this ID for correct reference in HTML
+     document.getElementById('dob').textContent = dob;
+     document.getElementById('balance').textContent = balance;
+
+    </script>
+
+</body>
+</html>

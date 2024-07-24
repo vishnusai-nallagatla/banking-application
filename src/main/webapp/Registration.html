@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <style>
+       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #6e8efb, #4b89e0);
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    max-width: 600px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    animation: fadeIn 0.5s ease-out;
+}
+
+h2 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+label {
+    flex: 0 0 30%;
+    color: #fff;
+    font-weight: 500;
+    margin-right: 10px;
+    text-align: left;
+}
+
+input[type="text"], 
+input[type="email"], 
+input[type="number"], 
+input[type="date"],
+select {
+    flex: 0 0 60%;
+    width: 60%;
+    padding: 10px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    font-size: 16px;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus, 
+input[type="email"]:focus, 
+input[type="number"]:focus, 
+input[type="date"]:focus,
+select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+select {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+select:focus {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+select option {
+    background-color: #6e8efb;
+    color: #fff;
+}
+
+select option:checked,
+select option:hover {
+    background-color: #6e8efb;
+    color: #fff;
+}
+
+input[type="submit"] {
+    width: 100%;
+    background: linear-gradient(135deg, #6e8efb, #4b89e0);
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid #fff;
+}
+
+input[type="submit"]:hover {
+    background-color: black;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    .form-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    label {
+        flex: 1 0 100%;
+        text-align: left;
+        margin-bottom: 5px;
+        margin-right: 0;
+    }
+
+    input[type="text"], 
+    input[type="email"], 
+    input[type="number"], 
+    input[type="date"],
+    select {
+        flex: 1 0 100%;
+        width: 100%;
+    }
+}
+
+/* Fix for select and input[type="date"] appearance */
+select,
+input[type="date"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+       
+    </style>
+
+</head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Creation</title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Account Creation</h2>
+        <hr><br>
+        <form id="registrationForm" action="Admindashboard" method="get" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="full_name" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <div class="form-group">
+                <label for="mobileNo">Mobile Number</label>
+                <input type="text" id="mobileNo" name="mobile_no" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="accountType">Account Type</label>
+                <select id="accountType" name="account_type" required>
+                    <option value="" disabled selected>Select Account Type</option>
+                    <option value="Saving">Saving</option>
+                    <option value="Current">Current</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="balance">Balance</label>
+                <input type="number" id="balance" name="balance" required>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+            <div class="form-group">
+                <label for="idProof">ID Proof</label>
+                <select id="idProof" name="id_proff" required>
+                    <option value="Aadhar">Aadhar Number</option>
+                    <option value="PAN">PAN Number</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="idProofNumber">ID Proof Number</label>
+                <input type="text" id="idProofNumber" name="id_proff_number" required>
+            </div>
+            <input type="submit" value="Register">
+        </form>
+    </div>
+    <script>
+        // Function to validate the form data
+        function validateForm() {
+            // Get form values
+            var fullName = document.getElementById("fullName").value.trim();
+            var address = document.getElementById("address").value.trim();
+            var mobileNo = document.getElementById("mobileNo").value.trim();
+            var email = document.getElementById("email").value.trim();
+            var accountType = document.getElementById("accountType").value.trim();
+            var balance = document.getElementById("balance").value.trim();
+            var dob = document.getElementById("dob").value.trim();
+            var idProof = document.getElementById("idProof").value.trim();
+            var idProofNumber = document.getElementById("idProofNumber").value.trim();
+
+            // Initialize error message
+            var error = "";
+
+            // Validation checks
+            if (!fullName) {
+                error += "Full Name is required.\n";
+            }
+            if (!address) {
+                error += "Address is required.\n";
+            }
+            if (!mobileNo || mobileNo.length !== 10 || isNaN(mobileNo)) {
+                error += "Mobile Number must be 10 digits.\n";
+            }
+            if (!email || !validateEmail(email)) {
+                error += "Valid Email is required.\n";
+            }
+            if (!accountType) {
+                error += "Account Type is required.\n";
+            }
+            if (balance === "" || balance < 1000) {
+                error += "Balance should be at least 1000.\n";
+            }
+            if (!dob) {
+                error += "Date of Birth is required.\n";
+            }
+
+            // Additional validation for ID Proof
+            if (idProof === "Aadhar") {
+                if (idProofNumber.length !== 12 || isNaN(idProofNumber)) {
+                    error += "Aadhar Number must be 12 digits.\n";
+                }
+            } else if (idProof === "PAN") {
+                var panRegex = /^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/;
+                if (!panRegex.test(idProofNumber)) {
+                    error += "Invalid PAN Number format.\n";
+                }
+            }
+
+            // Show error message if any errors are found
+            if (error) {
+                alert(error);
+                return false; // Prevent form submission
+            }
+
+            return true; 
+        }
+
+        // Function to validate email format
+        function validateEmail(email) {
+            var re = /\S+@\S+\.\S+/;
+            return re.test(email);
+        }
+    </script>
+</body>
+</html>
